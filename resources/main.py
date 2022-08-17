@@ -15,6 +15,9 @@ class OpenCoreLegacyPatcher:
         self.constants = constants.Constants()
         self.constants.wxpython_variant = launch_gui
         self.generate_base_data()
+
+        print(vars(self.constants))
+
         if utilities.check_cli_args() is None:
             if launch_gui is True:
                 utilities.disable_cls()

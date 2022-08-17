@@ -16,8 +16,8 @@ jobs:
       commitdate: ${{ github.event.head_commit.timestamp }}${{ github.event.release.published_at }}
     steps:
       - uses: actions/checkout@v3
-      - run: pip3.9 install requests, PyObjc, wxPython
-      - run: python3.9 Build-Binary.command --reset_binaries --branch "${{ env.branch }}" --commit "${{ env.commiturl }}" --commit_date "${{ env.commitdate }}"
+      - run: pip3 install requests PyObjc wxPython
+      - run: python3 Build-Binary.command --reset_binaries --branch "${{ env.branch }}" --commit "${{ env.commiturl }}" --commit_date "${{ env.commitdate }}"
       - run: 'codesign -s "Developer ID Application: Mykola Grymalyuk (S74BDJXQMD)" -v --force --deep --timestamp --entitlements ./payloads/entitlements.plist -o runtime "dist/OpenCore-Patcher.app"'
       - run: cd dist; ditto -c -k --sequesterRsrc --keepParent OpenCore-Patcher.app ../OpenCore-Patcher-wxPython.app.zip
       - run: mv ./OpenCore-Patcher-wxPython.app.zip ./OpenCore-Patcher-GUI.app.zip
