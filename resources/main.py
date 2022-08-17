@@ -20,6 +20,11 @@ class OpenCoreLegacyPatcher:
 
         print(f"SIP Status: {utilities.csr_dump()}")
 
+        # 'sysctl -a | grep machdep.cpu'
+        result = subprocess.run(["sysctl", "-a"], stdout=subprocess.PIPE)
+        print(f"CPU Info: {result.stdout.decode('utf-8')}")
+        
+
         if utilities.check_cli_args() is None:
             if launch_gui is True:
                 utilities.disable_cls()
