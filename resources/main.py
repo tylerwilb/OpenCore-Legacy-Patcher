@@ -18,6 +18,8 @@ class OpenCoreLegacyPatcher:
 
         print(vars(self.constants))
 
+        print(f"SIP Status: {utilities.csr_dump()}")
+
         if utilities.check_cli_args() is None:
             if launch_gui is True:
                 utilities.disable_cls()
