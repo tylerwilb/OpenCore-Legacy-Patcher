@@ -12,8 +12,8 @@
       "url": "git+https://github.com/dortania/OpenCore-Legacy-Patcher.git"
    },
    "scripts": {
-      "dev": "vuepress dev",
-      "build": "vuepress build",
+      "dev": "node --openssl-legacy-provider ./node_modules/vuepress/cli.js dev",
+      "build": "node --openssl-legacy-provider ./node_modules/vuepress/cli.js build",
       "fix-lint": "run-script-os",
       "fix-lint:default": "(echo Attempting to fix lint... && markdownlint -c .markdownlint.json -p .markdownlintignore '**/*.md' -f && echo Fixed successfully, please commit.) || (echo Fix failed! && exit 1)",
       "fix-lint:win32": "(echo Attempting to fix lint... && markdownlint -c .markdownlint.json -p .markdownlintignore **/*.md -f && echo Fixed successfully, please commit.) || (echo Fix failed! && exit 1)",
@@ -32,12 +32,15 @@
       "test:win32": "npm run lint --silent & npm run spellcheck --silent"
    },
    "license": "CC-BY-NC-SA-4.0",
+   "engines": {
+      "node": ">=24 <25"
+   },
    "devDependencies": {
       "@vuepress/plugin-back-to-top": "^1.7.1",
       "markdown-it-multimd-table": "^4.0.3",
       "markdown-link-check": "^3.8.5",
-      "markdownlint-cli": "^0.49.1",
-      "run-script-os": "^1.1.4",
+      "markdownlint-cli": "^0.50.0",
+      "run-script-os": "^1.1.6",
       "spellchecker-cli": "^4.4.0",
       "vuepress": "^1.7.1",
       "vuepress-plugin-medium-zoom": "^1.1.9",
