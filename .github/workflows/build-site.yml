@@ -12,7 +12,8 @@ jobs:
     steps:
       - uses: actions/setup-node@v3
         with:
-          node-version: '12'
+          # Keep in sync with docs/.nvmrc and docs/package.json.
+          node-version: '24'
       - name: Checkout Repository
         uses: actions/checkout@v3
         with:
@@ -20,7 +21,7 @@ jobs:
           persist-credentials: false
           submodules: 'recursive'
       - name: Install
-        run: npm install
+        run: npm ci
         working-directory: 'docs'
       - name: Build
         run: npm run build
